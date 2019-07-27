@@ -1,0 +1,165 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "BookStore1",
+    "x-lastModified": "Jul 26, 2019 18:56PM PST"
+  },
+  "paths": {
+    "/books/{id}": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "name": "device",
+            "in": "query",
+            "description": "mobile or pc",
+            "required": false,
+            "type": "string",
+            "format": "",
+            "default": "pc"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          }
+        ],
+        "operationId": "getBooks_id"
+      },
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "$ref": "#/definitions/PostResponseSchema1"
+            },
+            "examples": {
+              "application/json": {
+                "internalID": "1234AAX",
+                "title": "My new book"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": ""
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/BookSchema1"
+            }
+          }
+        ],
+        "operationId": "postBooks_id",
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "put": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "name": "id"
+          }
+        ],
+        "operationId": "putBooks_id"
+      },
+      "delete": {
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success response"
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "description": "",
+            "required": true,
+            "type": "string",
+            "format": "",
+            "name": "id"
+          }
+        ],
+        "operationId": "deleteBooks_id"
+      }
+    }
+  },
+  "definitions": {
+    "BookSchema1": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "default": "My new book"
+        },
+        "author": {
+          "type": "string",
+          "default": "Leon Stigter"
+        },
+        "description": {
+          "type": "string",
+          "default": "A new cool book on APIs"
+        },
+        "price": {
+          "type": "number",
+          "default": 29.95
+        },
+        "Currency": {
+          "type": "string",
+          "default": "₹"
+        }
+      }
+    },
+    "PostResponseSchema1": {
+      "type": "object",
+      "properties": {
+        "internalID": {
+          "type": "string",
+          "default": "1234AAX"
+        },
+        "title": {
+          "type": "string",
+          "default": "My new book"
+        }
+      }
+    }
+  }
+}
