@@ -1,0 +1,111 @@
+definitions:
+  BookSchema1:
+    properties:
+      Currency:
+        default: ₹
+        type: string
+      author:
+        default: Leon Stigter
+        type: string
+      description:
+        default: A new cool book on APIs
+        type: string
+      price:
+        default: 29.95
+        type: number
+      title:
+        default: My new book
+        type: string
+    type: object
+  PostResponseSchema1:
+    properties:
+      internalID:
+        default: 1234AAX
+        type: string
+      title:
+        default: My new book
+        type: string
+    type: object
+info:
+  title: BookStore1
+  version: 1.0.0
+  x-lastModified: Jul 26, 2019 18:56PM PST
+paths:
+  /books/{id}:
+    delete:
+      operationId: deleteBooks_id
+      parameters:
+      - description: ""
+        format: ""
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success response
+    get:
+      operationId: getBooks_id
+      parameters:
+      - default: pc
+        description: mobile or pc
+        format: ""
+        in: query
+        name: device
+        required: false
+        type: string
+      - description: ""
+        format: ""
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success response
+    post:
+      consumes:
+      - application/json
+      operationId: postBooks_id
+      parameters:
+      - description: ""
+        format: ""
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: ""
+        in: body
+        name: body
+        schema:
+          $ref: '#/definitions/BookSchema1'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success response
+          examples:
+            application/json:
+              internalID: 1234AAX
+              title: My new book
+          schema:
+            $ref: '#/definitions/PostResponseSchema1'
+    put:
+      operationId: putBooks_id
+      parameters:
+      - description: ""
+        format: ""
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Success response
+swagger: "2.0"
